@@ -1,0 +1,21 @@
+Maşala Bianca-Ioana,315CD
+
+Cerinţa 1: Iterative
+Am citit din fişier şi am format matricea de adiacenţă, după care am format matricea M după formula din enunţ.În continuare m-am folosit de faptul ca matricea K este diagonala, ceea ce înseamnă ce inversa sa va avea 1/K(i,i) pe diagonală.Am pus 1/N pe fiecare poziţie a vectorului, după care am calculat R. Continui algoritmul până când un număr primit ca parametru este mai mare decât norma diferenţei dintre R şi R_l. Am folosit din acest motiv variabila min pe care am iniţializat-o cu un număr mare pentru a fi sigură că este mai mare decât toleranţa dată, iar în final am returnat R_l.
+
+Cerinţa 2: Algebraic
+La fel ca la cerinţa 1 am format matricea M şi matricea de adiacenţă.Pentru inversă am folosit Gram-Schmidt care primeşte matricea A ca parametru şi returnează inversa. Aşa cum se spune şi în cerinţă, se rezolvă sistemul A * xi = ei, pentru fiecare i în parte, folosind algoritmul Gram-Schmidt optimizat.
+
+Cerinţa 3: Apartenenţa
+Verificăm în care interval se regăseşte x. Dacă este în primul se returnează 0, dacă se află în ultimul, returnez 1, altfel vom avea următorul sistem pentru ca funcţia să fie continuă: 
+a * val1 + b = 0
+a * val2 + b = 1
+Construiesc matricea coeficienţilor şi aflu necunoscutele a şi b, înmulţind vectorul coloană al termenilor liberi cu inversa lui M(folosesc Gram-Schmidt modificat pentru a o calcula). După ce aflu a şi b, calculez funcţia în x.
+
+PageRank
+In această funcţie am apelat funcţiile precedente Iterative şi Algebraic.Pentru a realiza clasamentul celor mai importante pagini, clasament în care ne interesează locul obţinut, numărul paginii şi gradul ei de apartenenţă am procedat astfel:
+-am ordonat descrescător R2
+-am luat un vector care iniţial ia valori de la 1 la numărul de pagini
+-când se interschimbă două valori din vectorul R2 se interschimbă şi poziţiile acestora din vectorul auxiliar
+-se calculează gradul de apartenenţă al fiecărei pagini.
+
